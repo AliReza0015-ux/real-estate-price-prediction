@@ -23,14 +23,28 @@ property_age = st.sidebar.number_input("Property Age", min_value=0, max_value=10
 condo = st.sidebar.radio("Is it a Condo?", [0, 1])
 bunglow = st.sidebar.radio("Is it a Bunglow?", [0, 1])
 
+# Prepare input
 input_data = preprocess_input(
     year_sold, property_tax, insurance, beds, baths, sqft,
     year_built, lot_size, basement, popular, property_age,
     condo, bunglow
 )
 
+# 🛠️ Rename columns to match the trained model exactly
+input_data.columns = [
+    'year_sold', 'property_tax', 'insurance', 'beds', 'baths', 'sqft',
+    'year_built', 'lot_size', 'basement', 'popular', 'property_age',
+    'property_type_Bunglow', 'property_type_Condo'
+]
+
 model = load_model()
+
+# Optional debug
+st.write("🧪 Input feature columns:", input_data.columns.tolist())
+
+# Predict
 prediction = model.predict(input_data)
 
+# Display result
 st.subheader("🏷️ Predicted House Price:")
 st.success(f"${prediction[0]:,.2f}")
