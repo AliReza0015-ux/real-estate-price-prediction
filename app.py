@@ -7,29 +7,30 @@ st.set_page_config(page_title="Real Estate Price Predictor")
 
 st.title("🏠 Real Estate Price Prediction")
 
-st.sidebar.header("Input House Features")
+st.sidebar.header("Enter House Features")
 
-year = st.sidebar.number_input("Year Built", min_value=1900, max_value=2025, value=2000)
+year_sold = st.sidebar.number_input("Year Sold", min_value=1990, max_value=2025, value=2020)
+property_tax = st.sidebar.number_input("Property Tax ($)", min_value=0, value=2500)
+insurance = st.sidebar.number_input("Insurance Cost ($)", min_value=0, value=1200)
 beds = st.sidebar.slider("Number of Bedrooms", 1, 10, 3)
 baths = st.sidebar.slider("Number of Bathrooms", 1, 10, 2)
-stories = st.sidebar.slider("Number of Stories", 1, 5, 2)
-garage = st.sidebar.radio("Garage", [0, 1])
-area = st.sidebar.number_input("Area (sqft)", min_value=100, max_value=10000, value=2000)
-lot = st.sidebar.number_input("Lot Size (sqft)", min_value=100, max_value=20000, value=5000)
-pool = st.sidebar.radio("Swimming Pool", [0, 1])
-fireplace = st.sidebar.radio("Fireplace", [0, 1])
-renovated = st.sidebar.radio("Recently Renovated", [0, 1])
-rating = st.sidebar.slider("Neighborhood Rating", 1, 10, 5)
+sqft = st.sidebar.number_input("Living Area (sqft)", min_value=200, max_value=10000, value=1800)
+year_built = st.sidebar.number_input("Year Built", min_value=1900, max_value=2025, value=2005)
+lot_size = st.sidebar.number_input("Lot Size (sqft)", min_value=500, max_value=50000, value=5000)
+basement = st.sidebar.radio("Basement?", [0, 1])
+popular = st.sidebar.radio("Popular Location?", [0, 1])
+property_age = st.sidebar.number_input("Property Age", min_value=0, max_value=100, value=15)
 condo = st.sidebar.radio("Is it a Condo?", [0, 1])
 bunglow = st.sidebar.radio("Is it a Bunglow?", [0, 1])
 
 input_data = preprocess_input(
-    year, beds, baths, stories, garage, area, lot, pool,
-    fireplace, renovated, rating, condo, bunglow
+    year_sold, property_tax, insurance, beds, baths, sqft,
+    year_built, lot_size, basement, popular, property_age,
+    condo, bunglow
 )
 
 model = load_model()
 prediction = model.predict(input_data)
 
-st.subheader("Predicted House Price:")
+st.subheader("🏷️ Predicted House Price:")
 st.success(f"${prediction[0]:,.2f}")

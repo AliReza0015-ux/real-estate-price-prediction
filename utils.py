@@ -1,26 +1,19 @@
 import pandas as pd
 
-def preprocess_input(year, beds, baths, stories, garage, area, lot, pool, fireplace, renovated, rating, condo, bunglow):
-    # Use exact feature names from training data
+def preprocess_input(year_sold, property_tax, insurance, beds, baths, sqft,
+                     year_built, lot_size, basement, popular, property_age,
+                     condo, bunglow):
+    
     columns = [
-        'year',                  # match column name
-        'beds',
-        'baths',
-        'stories',
-        'garage',
-        'area',
-        'lot',
-        'pool',
-        'fireplace',
-        'renovated',
-        'rating',
-        'property_type_Condo',   # match one-hot column
-        'property_type_Bunglow'  # match one-hot column
+        'year_sold', 'property_tax', 'insurance', 'beds', 'baths', 'sqft',
+        'year_built', 'lot_size', 'basement', 'popular', 'property_age',
+        'property_type_Condo', 'property_type_Bunglow'
     ]
     
     values = [[
-        year, beds, baths, stories, garage, area, lot,
-        pool, fireplace, renovated, rating, condo, bunglow
+        year_sold, property_tax, insurance, beds, baths, sqft,
+        year_built, lot_size, basement, popular, property_age,
+        condo, bunglow
     ]]
     
     return pd.DataFrame(values, columns=columns)
