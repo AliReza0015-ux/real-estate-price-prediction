@@ -1,7 +1,14 @@
 #  Real Estate Price Prediction | Machine Learning & Streamlit App
 
-This project uses machine learning to predict real estate property prices based on features such as location, number of bedrooms, area, and more. The goal is to provide accurate price estimates using regression models and deploy the application using Streamlit.
+Developed an end-to-end machine learning solution to predict real estate property prices using regression models and deploy an interactive dashboard.
 
+• Built and evaluated multiple regression models (Linear, Ridge, XGBoost) to estimate property prices based on key features such as location, size, and number of rooms  
+• Performed data preprocessing, feature engineering, and model validation using Python (Pandas, Scikit-learn)  
+• Compared model performance using RMSE, MAE, and R² to identify the most accurate approach  
+• Developed an interactive Streamlit application to allow users to input property features and receive real-time price predictions  
+• Translated model outputs into user-friendly insights to support data-driven decision-making  
+
+Tech Stack: Python, Pandas, Scikit-learn, XGBoost, Streamlit
 ##  Project Overview
 
 - **Task:** Regression (predicting continuous property prices)
