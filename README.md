@@ -1,4 +1,4 @@
-#  Real Estate Price Prediction
+#  Real Estate Price Prediction | Machine Learning & Streamlit App
 
 This project uses machine learning to predict real estate property prices based on features such as location, number of bedrooms, area, and more. The goal is to provide accurate price estimates using regression models and deploy the application using Streamlit.
 
